@@ -1,0 +1,56 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+<br><br>
+{% if current_user.user_type == "admin" %}
+<div>
+  <a href="{% url 'add_event' %} "><button class="btn btn-success">add event</button></a>
+</div>
+<hr>
+<br><br>
+{% endif %}
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Event Name</th>
+      <th scope="col">Event Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    {% for event in all_event %}
+    <tr class="table-success">
+      <td>{{event.event_name}}</td>
+      <td>{{event.date}}</td>
+      <td>
+        <a href="{% url 'event_detail' event.id %}"><button class="btn btn-info">view event</button></a>
+      </td>
+      {% if current_user.user_type == "admin" %}
+      <td>
+        <a href="{% url 'event_delete' event.id %}"><button class="btn btn-secondary">delete event</button></a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br><br>
+
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}

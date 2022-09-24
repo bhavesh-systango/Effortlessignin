@@ -1,0 +1,47 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+  <br>
+
+  <h2>Employee Detail</h2>
+  
+  <br>
+
+  <div>
+    <p>Name - {{employee_detail.first_name}} {{employee_detail.last_name}} </p>
+  </div>
+
+  <div>
+    <p>Employee Id - {{employee_detail.id}} </p>
+  </div>
+
+  <div>
+    <p>Email - {{employee_detail.email}} </p>
+  </div>
+
+  <div>
+    <p>Department - {{employee_detail.department_id}} </p>
+  </div>
+
+  <div>
+    <p>Designation - {{employee_detail.designation_id}} </p>
+  </div>
+
+  <div>
+    <p>Date Of Joining - {{employee_detail.date_joined}} </p>
+  </div>
+
+                    
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}
+        

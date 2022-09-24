@@ -1,0 +1,45 @@
+@use 'base';
+
+#BaseSection{
+    background-image: url("../images/background_image/bg2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: top;
+    background-position-x: right;
+    
+}
+
+#BaseDiv{
+    background-image: url("../images/background_image/bg1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+}
+
+#LeftBox{
+    height: 100vh;
+}
+
+h3{
+    color: base.$primary-teal-dark;
+}
+
+#formBox{
+    background-color: base.$secondary-teal-light;
+    border-radius: base.$primary-radius;
+}
+
+#forgotPasswordButton{
+    color: base.$primary-teal-dark;
+    font-weight: 600;
+}
+
+#loginButton{
+    background-color: base.$primary-teal-light;
+    border: 0px solid transparent;
+    border-radius: base.$primary-radius;
+    color: base.$primary-white;
+}
+
+
+

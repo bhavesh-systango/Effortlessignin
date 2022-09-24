@@ -1,0 +1,52 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+  <br><br>
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+        <th scope="col">Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for week in current_month_calendar_with_status %}
+        <tr class="table-secondary">
+        {% for day in week %}
+          {% if day.date == 0 %}
+            <td></td>
+          {% else %}
+            {% if day.status == "present" %}
+              <td class="table-success">{{day.date}}<br>{{day.status}}</td>
+            {% elif day.status == "half_day_leave" %}
+              <td class="table-warning">{{day.date}}<br>{{day.status}}</td>
+            {% elif day.status == "loss_of_pay_leave" or day.status == "paid_leave" %}
+              <td class="table-danger">{{day.date}}<br>{{day.status}}</td>
+            {% else %}
+              <td>{{day.date}}</td>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+                    
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}

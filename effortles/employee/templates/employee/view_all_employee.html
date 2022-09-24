@@ -1,0 +1,67 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+  <br><br>
+  {% if current_user.user_type == "admin" %}
+  <div>
+    <a href="{% url 'add_employee' %} "><button class="btn btn-success">add employee</button></a>
+  </div>
+  <hr>
+  <br><br>
+  {% endif %}
+
+  
+
+  <h1>Filters</h1>
+  <form method="get">
+    {{ filter_object.form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Filter data">
+  </form>
+
+  <br><br>
+
+  <hr>
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Employee id</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      
+      {% for employee in filter_object.qs %}
+        {% if employee.is_superuser != 1 and employee.id != current_user.id %}
+          <tr class="table-success">
+            <td>{{employee.first_name}} {{employee.last_name}}</td>
+            <td>{{employee.id}}</td>
+            <td>
+              <a href="{% url 'employee_detail' employee.id %}"><button class="btn btn-info">view profile</button></a>
+              {% if current_user.user_type == "admin" %}
+                <a href="{% url 'edit_employee' employee.id %}"><button class="btn btn-secondary">Edit profile</button></a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br><br>
+                    
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}
+        

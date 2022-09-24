@@ -1,0 +1,41 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+  <br><br>
+  
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Employee id</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employee_under_me %}
+        {% if employee.is_superuser != 1 and employee.id != current_user.id %}
+          <tr class="table-success">
+            <td>{{employee.first_name}} {{employee.last_name}}</td>
+            <td>{{employee.id}}</td>
+            <td>
+              <a href="/employee/employee/{{employee.id}}/detail"><button class="btn btn-info">view profile</button></a>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+                    
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}
+        

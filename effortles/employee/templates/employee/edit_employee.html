@@ -1,0 +1,36 @@
+{% extends "employeebase.html" %}
+
+{% block metaTag%}
+{% endblock %}
+
+{% block customeCss %}
+{% endblock %}
+
+{% block title %} EffortLes {% endblock %}
+
+{% block main %}
+  <br>
+
+  <h2>Add employee form</h2>
+  
+  <br>
+
+  <form action="" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <br>
+
+    <div>
+      <button class="btn btn-success" type="submit">Edit Employee</button>
+    </div>
+    
+
+  </form>
+                    
+{% endblock %}
+
+{% block customeJs%}
+{% endblock %}
+        
